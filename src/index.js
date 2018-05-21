@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 const initialState = {
-  count: 42
+  count: 0
 };
 
 function reducer(state = initialState, action) {
@@ -13,25 +13,30 @@ function reducer(state = initialState, action) {
   switch(action.type) {
     case 'INCREMENT':
     	console.log(state);
-      return {
-        count: state.count + 1
-      };
+      if(state.count < 5){
+        return {
+          count: state.count + 1
+        };
+      }
+      break;
     case 'DECREMENT':
     	console.log(state);
-      return {
-        count: state.count - 1
-      };
-    default:
-      return state;
+      if(state.count > 0){
+        return {
+          count: state.count - 1
+        };
+      }
+      break;
   }
+  return state;
 }
 
 const store = createStore(reducer);
 
-const App = () => (
+const Apps = () => (
   <Provider store = {store}>
     <Counter/>
   </Provider>
 );
 
-render(<App />, document.getElementById('root'));
+render(<Apps />, document.getElementById('root'));
