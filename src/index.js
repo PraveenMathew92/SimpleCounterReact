@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Counter from './Counter';
+import Counter from './CounterContainer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
@@ -35,7 +35,7 @@ const store = createStore(reducer);
 
 const Apps = () => (
   <Provider store = {store}>
-    <Counter/>
+    <Counter />
   </Provider>
 );
 
